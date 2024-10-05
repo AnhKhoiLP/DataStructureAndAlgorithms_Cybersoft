@@ -90,7 +90,7 @@ result_in_range = phone_tree.find_price(min_price, max_price)
 result_exact_price = phone_tree.find_exact_price(exact_price)
 
 print("Cai Cay", phone_tree.get_tree())
-print("Dien Thoai Trong Khoang Gia {} Den {}: {}".format(min_price, max_price, result_in_range))
+print("Điện Thoại Trong Khoang Gia {} Den {}: {}".format(min_price, max_price, result_in_range))
 print("Dien Thoai Co Gia Tri La {}: {}".format(exact_price, result_exact_price))
 
 result_exact_price2 = phone_tree.find_exact_price(exact_price2)

@@ -14,7 +14,7 @@ def chenNodetoCay(cay, giaTri):
             cay.conPhai = chenNodetoCay(cay.conPhai, giaTri)
     return cay
 #+ IN THEO FORMAT
-def inCay(cay, capDo=0, tienTo="Gốc: "):
+def inCay(cay, capDo=0, tienTo="Goc: "):
     if cay is not None:
         print(" " * (capDo * 4) + tienTo + str(cay.giaTri))
         inCay(cay.conTrai, capDo + 1, "L--- ")
