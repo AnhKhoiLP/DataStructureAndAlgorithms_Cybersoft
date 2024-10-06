@@ -1,6 +1,7 @@
 
 #> 03: OBJECT
 #>     TRONG PYTHON GỌI LÀ DICTIONARY
+#>     1 OBJECT BAO GOM "KEY" : "VALUE"
 san_pham_01 = {
 	"ma_SP"			: 1,
 	"ten_san_pham"	: "Sản Phẩm 01"
