@@ -1,2 +1,3 @@
 
 #> LẤY DỮ LIỆU TỪ LISTOBJECT
+	#+ DUYỆT 
