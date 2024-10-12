@@ -1,3 +1,3 @@
 
-#> LẤY DỮ LIỆU TỪ LISTOBJECT
+#> LẤY DỮ LIỆU TỪ LIST_OBJECT
 	#+ DUYỆT 
