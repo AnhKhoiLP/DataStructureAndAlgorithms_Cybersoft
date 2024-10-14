@@ -26,7 +26,7 @@ while (i < n):
 			## Mỗi lần lặp, giá trị của i được tăng thêm 1.
 				#? Số Lần Lặp Được Tính Là: 2n
 	#| Biểu thức F(N):
-		#+ Tổng Số Lần Lặp Của Mỗi Lần Lặp Vòng Lặp while (i < n) Là: F(N) = (n^2 + n)
+		#+ Tổng Số Lần Lặp Của Mỗi Lần Lặp Vòng Lặp while (i < n) Khi Không Tính Phép Gán Là: F(N) = (n^2 + n)
 		#+ Tổng Số Lần Lặp Của while (i < n) Tính Luôn Cả Phép Gán: F(N) = (4n^2 + 2n) * (2n / 100)
 	#| Độ Phức Tạp Thời Gian Chạy:
 		#+ Xác Định F(N):
