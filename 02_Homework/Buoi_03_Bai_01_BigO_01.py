@@ -19,6 +19,6 @@ while (i < n):
 		#+ Mỗi lần lặp thực hiện thao tác gán giá trị i = i + 1 đây là một thao tác có độ phức tạp O(1)
 		#+ Ký Hiệu Big O: O(n)
 	#| Biểu thức F(N):
-		#+ F(N)=1+2n
+		#+ F(N) = 1+2n
 			## 1: Đại diện cho thao tác khởi tạo i = 0 (O(1)).
 			## 2n: Đại diện cho việc vòng lặp thực hiện n lần với mỗi lần bao gồm hai thao tác chính: kiểm tra điều kiện i < n và gán i = i + 1. Mỗi thao tác trong mỗi vòng lặp có độ phức tạp O(1), và hai thao tác gộp lại là 2n.
