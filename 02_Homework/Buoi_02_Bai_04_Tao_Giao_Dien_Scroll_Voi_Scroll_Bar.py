@@ -17,18 +17,18 @@ main_window.geometry("400x600")
 main_window.resizable(False, True)
 
 #* Tạo Container Để Cho Phép Cuộn
-container = ctk.CTkCanvas(master=main_window, bg="#A9A9A9")
-container.pack(side="left", fill="both", expand=True)
+container = ctk.CTkCanvas(master = main_window, bg = "#A9A9A9")
+container.pack(side = "left", fill = "both", expand = True)
 
 #* Tạo Thanh Cuộn
-scrollbar = ctk.CTkScrollbar(main_window, orientation="vertical", command=container.yview)
-scrollbar.pack(side="right", fill="y")
+scrollbar = ctk.CTkScrollbar(main_window, orientation = "vertical", command = container.yview)
+scrollbar.pack(side = "right", fill = "y")
 
 #* Liên Kết Thanh Cuộn Với container
-container.configure(yscrollcommand=scrollbar.set)
+container.configure(yscrollcommand = scrollbar.set)
 
 button_frame = ctk.CTkFrame(container)
-container.create_window((0, 0), window=button_frame, anchor="n")
+container.create_window((0, 0), window = button_frame, anchor = "n")
 
 #* Số Lượng Nút Hiển Thị Ban Đầu Và Đã Load
 initial_button_count = 20
@@ -39,25 +39,25 @@ def load_buttons():
     global buttons_loaded
     for i in range(buttons_loaded, min(buttons_loaded + initial_button_count, number_buttons)):
         button = ctk.CTkButton(
-            master=button_frame,
-            text=f"Button {i + 1} !",
-            corner_radius=8,
-            width=370,
-            height=10,
-            font=("Courier New", 15),
+            master = button_frame,
+            text = f"Button {i + 1} !",
+            corner_radius = 8,
+            width = 370,
+            height = 10,
+            font = ("Courier New", 15),
             border_spacing = 1,
-            fg_color="#C5F8E4",
-            hover_color="#0B9560",
-            text_color="#000000"
+            fg_color = "#C5F8E4",
+            hover_color = "#0B9560",
+            text_color = "#000000"
         )
-        button.pack(padx=5, pady=5)
-    buttons_loaded += initial_button_count
+        button.pack(padx = 5, pady = 5)
+    buttons_loaded + =  initial_button_count
     update_scroll_region()
 
 #* Cập Nhật Vùng Cuộn
-def update_scroll_region(event=None):
+def update_scroll_region(event = None):
     button_frame.update_idletasks()
-    container.config(scrollregion=container.bbox("all"))
+    container.config(scrollregion = container.bbox("all"))
 
 #* Tải Thêm Nút Khi Cuộn Gần Cuối
 def on_scroll(event):
