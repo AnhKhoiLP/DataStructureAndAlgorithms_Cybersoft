@@ -51,7 +51,7 @@ def load_buttons():
             text_color = "#000000"
         )
         button.pack(padx = 5, pady = 5)
-    buttons_loaded + =  initial_button_count
+    buttons_loaded +=  initial_button_count
     update_scroll_region()
 
 #* Cập Nhật Vùng Cuộn
