@@ -1,63 +1,75 @@
 import customtkinter as ctk
-
-# Khởi Tạo Cửa Sổ Chính
-window = ctk.CTk()
-window.title("Cybersoft")
-window.geometry("400x600")  # Đặt kích thước cửa sổ chính
 ctk.set_appearance_mode("dark")
 
-# Tạo Canvas để cho phép cuộn
-canvas = ctk.CTkCanvas(master = window, bg = "white")
-canvas.pack(side="left", fill="none", expand=True)
+#* Yêu Cầu Người Dùng Nhập Số Lượng Nút Từ Terminal
+try:
+    number_buttons = int(input("Nhập số lượng nút bạn muốn tạo: "))
+except ValueError:
+    print("Vui lòng nhập một số nguyên hợp lệ.")
+    exit()
 
-# Tạo Thanh Cuộn
-scrollbar = ctk.CTkScrollbar(window, orientation="vertical", command=canvas.yview)
+#* Khởi Tạo Cửa Sổ Chính
+main_window = ctk.CTk()
+main_window.title("Cybersoft")
+main_window.geometry("400x600")
+main_window.resizable(False, True)
+
+#* Tạo Container Để Cho Phép Cuộn
+container = ctk.CTkCanvas(master=main_window, bg="#A9A9A9")
+container.pack(side="left", fill="both", expand=True)
+
+#* Tạo Thanh Cuộn
+scrollbar = ctk.CTkScrollbar(main_window, orientation="vertical", command=container.yview)
 scrollbar.pack(side="right", fill="y")
 
-# Liên Kết Thanh Cuộn Với Canvas
-canvas.configure(yscrollcommand=scrollbar.set)
+#* Liên Kết Thanh Cuộn Với container
+container.configure(yscrollcommand=scrollbar.set)
 
-# Tạo Frame con bên trong Canvas
-button_frame = ctk.CTkFrame(canvas)
-canvas.create_window((0, 0), window=button_frame, anchor="nw")
+button_frame = ctk.CTkFrame(container)
+container.create_window((0, 0), window=button_frame, anchor="n")
 
-# Ngăn không cho frame tự động điều chỉnh kích thước
-button_frame.pack_propagate(False)
+#* Số Lượng Nút Hiển Thị Ban Đầu Và Đã Load
+initial_button_count = 20
+buttons_loaded = 0
 
-#Số Nút
-number_buttons = 5
+#* Tạo Nút Ban Đầu
+def load_buttons():
+    global buttons_loaded
+    for i in range(buttons_loaded, min(buttons_loaded + initial_button_count, number_buttons)):
+        button = ctk.CTkButton(
+            master=button_frame,
+            text=f"Button {i + 1} !",
+            corner_radius=8,
+            width=370,
+            height=10,
+            font=("Courier New", 15),
+            border_spacing = 1,
+            fg_color="#C5F8E4",
+            hover_color="#0B9560",
+            text_color="#000000"
+        )
+        button.pack(padx=5, pady=5)
+    buttons_loaded += initial_button_count
+    update_scroll_region()
 
-# Tạo 1000 Nút
-for i in range(number_buttons):
-	button = ctk.CTkButton(
-		master=button_frame,
-		text=f"Button {i + 1} !",
-		corner_radius=8,
-		width=200,
-		height=30,
-		font=("Courier New", 12),
-		border_spacing=10
-	)
-	button.pack(side="top", padx = 20, pady = 5)  # Thêm khoảng cách giữa các nút
-
-# Cập Nhật Kích Thước Của Frame Chứa Nút
+#* Cập Nhật Vùng Cuộn
 def update_scroll_region(event=None):
-	# Cập nhật kích thước của button_frame
-	button_frame.update_idletasks()  # Cập nhật kích thước
-	canvas.config(scrollregion=canvas.bbox("all"))  # Cập nhật vùng cuộn
+    button_frame.update_idletasks()
+    container.config(scrollregion=container.bbox("all"))
 
-	# # Đặt chiều cao cho button_frame theo số lượng nút
-	# button_frame_height = 30 * number_buttons + 20 * number_buttons - 1  # Chiều cao của 1000 nút + khoảng cách
-	# button_frame.configure(height = button_frame_height)
+#* Tải Thêm Nút Khi Cuộn Gần Cuối
+def on_scroll(event):
+    container.yview_scroll(int(-1*(event.delta//120)), "units")
+    if container.yview()[1] > 0.9:
+        if buttons_loaded < number_buttons:
+            load_buttons()
 
-# Gọi hàm cập nhật khi cửa sổ được tạo
-update_scroll_region()
+#* Gọi Hàm Tạo Nút Ban Đầu
+load_buttons()
 
-# Gắn sự kiện để cập nhật lại khi khung được thay đổi kích thước
-window.bind("<Configure>", update_scroll_region)
+#* Gắn Sự Kiện Cuộn Chuột Và Kiểm Tra Vị Trí Cuộn
+main_window.bind_all("<MouseWheel>", on_scroll)
+container.bind("<Configure>", update_scroll_region)
 
-# Gắn sự kiện cuộn khi cuộn chuột
-window.bind_all("<MouseWheel>", lambda event: canvas.yview_scroll(int(-1*(event.delta//120)), "units"))
-
-# Chạy Giao Diện
-window.mainloop()
+#* Chạy Giao Diện
+main_window.mainloop()
