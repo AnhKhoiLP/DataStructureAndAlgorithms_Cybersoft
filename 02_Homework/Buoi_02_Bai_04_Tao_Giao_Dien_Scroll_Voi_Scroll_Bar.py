@@ -3,7 +3,7 @@ ctk.set_appearance_mode("dark")
 
 #* Yêu Cầu Người Dùng Nhập Số Lượng Nút Từ Terminal
 	# try:
-	#     number_buttons = int(input("Nhập số lượng nút bạn muốn tạo: "))
+	#     number_buttons = int(input("Nhập số lượng nút bạn muốn tạo:"))
 	# except ValueError:
 	#     print("Vui lòng nhập một số nguyên hợp lệ.")
 	#     exit()
