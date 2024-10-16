@@ -376,27 +376,18 @@ window.title("Phone Shop")
 window.geometry("1920x1080")
 window.resizable(True, True)
 
-# Khởi tạo khung cuộn với Canvas
 frame_dien_thoai = ctk.CTkCanvas(window, width=1920)
-frame_dien_thoai.pack(side="left", fill="both", expand=True)
-
-scrollbar = ctk.CTkScrollbar(frame_dien_thoai, orientation="vertical", command=frame_dien_thoai.yview)
-scrollbar.pack(side="right", fill="both")
-frame_dien_thoai.configure(yscrollcommand=scrollbar.set)
+frame_dien_thoai.pack(side="right", fill="both", expand=True)
 
 frame_noi_dung = ctk.CTkFrame(frame_dien_thoai)
 frame_dien_thoai.create_window((0, 0), window=frame_noi_dung, anchor="nw")
 
-so_dien_thoai_moi_dong = 4
-so_dien_thoai_moi_dot = 16  # Số điện thoại tải mỗi đợt khi cuộn
-
-# Lazy load tracking variables
-current_index = 0  # Vị trí hiện tại trong danh sách
-
 def tao_the_dien_thoai(frame, dien_thoai):
-	phone_frame = ctk.CTkFrame(frame, width=300, height=600, corner_radius = 20) 
+	phone_frame = ctk.CTkFrame(frame, width=400, height=600, corner_radius = 20) 
 	phone_frame.pack_propagate(False)
-	phone_frame.pack(side = "left", padx = 50, pady = 20)
+	phone_frame.pack(side = "left", padx = 40, pady = 20)
+
+	phone_image = ctk.CTkImage(light_image = Image.open('DataStructureAndAlgorithms_Cybersoft\02_Homework\00_Install\02_Homework'))
 
 	phone_label = ctk.CTkLabel(phone_frame, text=dien_thoai["name"], font=("Courier New", 20))
 	phone_label.pack(pady=10)
@@ -424,9 +415,15 @@ def tao_the_dien_thoai(frame, dien_thoai):
 		)
 	button.pack(padx = 5, pady = 5)
 
+scrollbar = ctk.CTkScrollbar(frame_dien_thoai, orientation="vertical", command=frame_dien_thoai.yview)
+scrollbar.pack(side="right", fill="both")
+frame_dien_thoai.configure(yscrollcommand=scrollbar.set)
+
+so_dien_thoai_moi_dong = 4
+so_dien_thoai_moi_dot = 8
+current_index = 0
 def tai_them_dien_thoai():
 	global current_index
-	# Load thêm một đợt điện thoại
 	for i in range(so_dien_thoai_moi_dot):
 		if current_index >= len(danh_sach_dien_thoai):
 			break
@@ -435,26 +432,18 @@ def tai_them_dien_thoai():
 			dong_frame.pack(fill="x")
 		tao_the_dien_thoai(dong_frame, danh_sach_dien_thoai[current_index])
 		current_index += 1
-
-	# Cập nhật kích thước canvas
 	frame_noi_dung.update_idletasks()
 	frame_dien_thoai.config(scrollregion=frame_dien_thoai.bbox("all"))
-
-#* Cập Nhật Vùng Cuộn
 def update_scroll_region(event = None):
-	button_frame.update_idletasks()
 	frame_dien_thoai.config(scrollregion = frame_dien_thoai.bbox("all"))
-
 def on_scroll(event):
 	frame_dien_thoai.yview_scroll(int(-1*(event.delta//120)), "units")
 	if frame_dien_thoai.yview()[1] > 0.9:
 		if current_index % so_dien_thoai_moi_dong == 0:
 			tai_them_dien_thoai()
 
-# Bắt sự kiện cuộn
 window.bind_all("<MouseWheel>", on_scroll)
 frame_dien_thoai.bind("<Configure>", update_scroll_region)
-# Tải dữ liệu ban đầu
 tai_them_dien_thoai()
 
 window.mainloop()
