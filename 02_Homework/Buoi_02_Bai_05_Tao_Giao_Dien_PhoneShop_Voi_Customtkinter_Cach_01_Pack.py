@@ -1,4 +1,6 @@
 import customtkinter as ctk
+import os
+from PIL import Image
 
 danh_sach_dien_thoai = [
 	{
@@ -368,7 +370,8 @@ danh_sach_dien_thoai = [
 		"Discontinued": "In production",
 		"Release OS": "iOS 18.0",
 		"Release Date": "20-09-2024"
-	}]
+	}
+]
 
 # Khởi tạo cửa sổ chính
 window = ctk.CTk()
@@ -382,12 +385,22 @@ frame_dien_thoai.pack(side="right", fill="both", expand=True)
 frame_noi_dung = ctk.CTkFrame(frame_dien_thoai)
 frame_dien_thoai.create_window((0, 0), window=frame_noi_dung, anchor="nw")
 
+
+phone_image_path = ""
+phone_image_id = 0
 def tao_the_dien_thoai(frame, dien_thoai):
 	phone_frame = ctk.CTkFrame(frame, width=400, height=600, corner_radius = 20) 
 	phone_frame.pack_propagate(False)
 	phone_frame.pack(side = "left", padx = 40, pady = 20)
 
-	phone_image = ctk.CTkImage(light_image = Image.open('DataStructureAndAlgorithms_Cybersoft\02_Homework\00_Install\02_Homework'))
+	phone_image_path = os.path
+	phone_image_path = f'IMG/{phone_image_id+1:03}.jpg'
+	phone_image = ctk.CTkImage(
+		light_image = Image.open(phone_image_path), 
+		dark_image = Image.open(phone_image_path),
+		size = (350,350))
+	phone_image_label = ctk.CTkLabel(phone_frame, text = "", image = phone_image)
+	phone_image_label.pack( padx = 20, pady = 20)
 
 	phone_label = ctk.CTkLabel(phone_frame, text=dien_thoai["name"], font=("Courier New", 20))
 	phone_label.pack(pady=10)
@@ -395,8 +408,8 @@ def tao_the_dien_thoai(frame, dien_thoai):
 	announced_label = ctk.CTkLabel(phone_frame, text=f"Announced")
 	announced_label.pack()
 
-	announced_label = ctk.CTkLabel(phone_frame, text=f"{dien_thoai['Announced']}")
-	announced_label.pack()
+	announced_date_label = ctk.CTkLabel(phone_frame, text=f"{dien_thoai['Announced']}")
+	announced_date_label.pack()
 
 	os_label = ctk.CTkLabel(phone_frame, text=f"{dien_thoai['Release OS']}")
 	os_label.pack()
@@ -424,14 +437,17 @@ so_dien_thoai_moi_dot = 8
 current_index = 0
 def tai_them_dien_thoai():
 	global current_index
+	global phone_image_id
 	for i in range(so_dien_thoai_moi_dot):
 		if current_index >= len(danh_sach_dien_thoai):
 			break
 		if current_index % so_dien_thoai_moi_dong == 0:
+
 			dong_frame = ctk.CTkFrame(frame_noi_dung)
 			dong_frame.pack(fill="x")
 		tao_the_dien_thoai(dong_frame, danh_sach_dien_thoai[current_index])
 		current_index += 1
+		phone_image_id += 1
 	frame_noi_dung.update_idletasks()
 	frame_dien_thoai.config(scrollregion=frame_dien_thoai.bbox("all"))
 def update_scroll_region(event = None):
