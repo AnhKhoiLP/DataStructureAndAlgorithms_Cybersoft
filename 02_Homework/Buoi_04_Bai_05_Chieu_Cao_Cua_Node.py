@@ -1,3 +1,5 @@
+
+#+ [NÚT Z LÀ NÚT ĐƯỢC KHOANH TRÒN]
 #         A
 #       / | \
 #      B  Z  C
@@ -17,7 +19,7 @@
 	#+ (2 Bước) - Đường Đi Từ Nút Z Đến Nút E: Z → B → E
 	#+ (3 Bước) - Đường Đi Từ Nút Z Đến Nút H: Z → C → F → H
 	#+ (2 Bước) - Đường Đi Từ Nút Z Đến Nút G: Z → C → G
-## Depth, Height, Size, Level
+## Depth, Height, Size, Level Của Cả Cây
 #*	|	Node	|	Depth	|	Height	|	Size	|	Level	|
 #*	|	 A  	|	  0  	|	  3   	|	 10  	|	  0  	|
 #*	|	 B  	|	  1  	|	  1   	|	  3  	|	  1  	|
@@ -27,4 +29,7 @@
 #*	|	 F  	|	  2  	|	  1   	|	  2  	|	  2  	|
 #*	|	 G  	|	  2  	|	  0   	|	  1  	|	  2  	|
 #*	|	 H  	|	  3  	|	  0   	|	  1  	|	  3  	|
+#*	|	 Z  	|	  1  	|	  0   	|	  1  	|	  1  	|
+## Depth, Height, Size, Level Từ Nút Z
+#*	|	Node	|	Depth	|	Height	|	Size	|	Level	|
 #*	|	 Z  	|	  1  	|	  0   	|	  1  	|	  1  	|

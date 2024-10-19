@@ -1,3 +1,5 @@
+
+#+ [NÚT C LÀ NÚT ĐƯỢC KHOANH TRÒN]
 #         A
 #       /   \
 #      B     C
@@ -28,7 +30,7 @@
 	#+ Chiều Sâu	: Chiều Sâu Của C Là 1, Nghĩa Là Nó Nằm Cách Gốc A Đúng 1 Cạnh.
 ## Bắt Đầu Từ Nút Gốc, Theo Dõi Đường Đi Đến Nút Được Khoanh Tròn.
 	#+ A TỚI C
-## Depth, Height, Size, Level
+## Depth, Height, Size, Level Của Cả Cây
 #*	|	Node	|	Depth	|	Height	|	Size	|	Level	|
 #*	|	 A  	|	  0  	|	  2   	|	 7  	|	  0  	|
 #*	|	 B  	|	  1  	|	  1   	|	 3  	|	  1  	|
@@ -37,4 +39,8 @@
 #*	|	 E  	|	  2  	|	  0   	|	 1  	|	  2  	|
 #*	|	 F  	|	  2  	|	  0   	|	 1  	|	  2  	|
 #*	|	 G  	|	  2  	|	  0   	|	 1  	|	  2  	|
-
+## Depth, Height, Size, Level Từ Nút C
+#*	|	Node	|	Depth	|	Height	|	Size	|	Level	|
+#*	|	 C  	|	  1  	|	  1   	|	 3  	|	  1  	|
+#*	|	 F  	|	  2  	|	  0   	|	 1  	|	  2  	|
+#*	|	 G  	|	  2  	|	  0   	|	 1  	|	  2  	|
