@@ -394,7 +394,7 @@ def tao_the_dien_thoai(frame, dien_thoai):
 	phone_frame.pack(side = "left", padx = 40, pady = 20)
 
 	phone_image_path = os.path
-	phone_image_path = f'DataStructureAndAlgorithms_Cybersoft/02_Homework/IMG/{phone_image_id+1:03}.jpg'
+	phone_image_path = f'DataStructureAndAlgorithms_Cybersoft/02_Homework/Buoi_02_Bai_05_Tao_Giao_Dien_PhoneShop_Voi_Customtkinter_Cach_01_Pack_IMG/{phone_image_id+1:03}.jpg'
 	phone_image = ctk.CTkImage(
 		light_image = Image.open(phone_image_path), 
 		dark_image = Image.open(phone_image_path),
