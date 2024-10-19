@@ -382,7 +382,7 @@ window.resizable(True, True)
 frame_dien_thoai = ctk.CTkCanvas(window, width=1920)
 frame_dien_thoai.pack(side="right", fill="both", expand=True)
 
-frame_noi_dung = ctk.CTkFrame(frame_dien_thoai)
+frame_noi_dung = ctk.CTkFrame(frame_dien_thoai, fg_color = "#000000")
 frame_dien_thoai.create_window((0, 0), window=frame_noi_dung, anchor="nw")
 
 
@@ -403,7 +403,7 @@ def tao_the_dien_thoai(frame, dien_thoai):
 	phone_image_label.pack( padx = 20, pady = 20)
 
 	phone_label = ctk.CTkLabel(phone_frame, text=dien_thoai["name"], font=("Courier New", 20))
-	phone_label.pack(pady=10)
+	phone_label.pack(pady = 10)
 
 	announced_label = ctk.CTkLabel(phone_frame, text=f"Announced")
 	announced_label.pack()
